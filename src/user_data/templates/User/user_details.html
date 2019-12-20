@@ -1,0 +1,25 @@
+{% extends 'base.html'%}
+{% block content %}
+<h1>User Details</h1></br>	
+<h2>Name: {{ object.Name }}</h2></br>
+<h2>Email: {{object.Email}}</h2></br>
+<h2>Phone: {{object.Phone}}</h2></br>
+{% if object.Age == '' %}
+<h2>Age: NONE</h2></br>
+{% else %}
+<h2>Age: {{object.Age}}</h2></br>
+{% endif %}
+{% if object.Gender == '' %}
+<h2>Gender: NONE</h2></br>
+{% else %}
+<h2>Gender: {{object.Gender}}</h2></br>
+{% endif %}
+
+<form action="{% url 'delete-view' user_delete_id=object.id%}" method='GET'>{% csrf_token %}
+	<input type="submit" value="Delete User Data">
+</form>
+</br>
+<form action="{% url 'update-view' user_update_id=object.id %}" method='GET'>{% csrf_token %}
+	<input type="submit" value="Update User Data">
+</form>
+{% endblock %}

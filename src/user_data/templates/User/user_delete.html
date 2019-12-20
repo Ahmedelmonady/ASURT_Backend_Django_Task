@@ -1,0 +1,7 @@
+{%extends 'base.html'%}
+{% block content %}
+<form action='.' method='POST'> {% csrf_token %}
+	<h1>Do you want to delete the User "{{ object.Name }}"?</h1>
+	<p><input type='submit' value='Yes'/></p></br><a href="{% url 'list-view' %}">Cancel</a></p>
+</form>
+{%endblock%}
